@@ -35,7 +35,8 @@ variable "sns_topic_name" {
 
 variable "slack_url" {
   description = "Webhook URL"
-  default     = "https://hooks.slack.com/services/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"
+  default     = "https://sample.url.com"
+  sensitive   = true
 }
 
 variable "runtime" {
@@ -61,7 +62,7 @@ variable "archive_file_type" {
 }
 
 variable "archive_file_source" {
-  default = "slack-sqs-lambda.py"
+  default = "slack_lambda_function.py"
 }
 
 variable "archive_file_output_path" {
@@ -80,6 +81,11 @@ variable "aws_lambda_permission_action" {
 
 variable "aws_lambda_permission_principal" {
   default = "sns.amazonaws.com"
+}
+
+variable "kms_master_key_id" {
+  default = "alias/aws/sns"
+
 }
 
 

@@ -45,10 +45,14 @@ resource "aws_lambda_function" "sns_lambda" {
       SLACK_URL = var.slack_url
     }
   }
+  tracing_config {
+    mode = "Active"
+  }
 }
 
 resource "aws_sns_topic" "slack_sns_topic" {
-  name = var.sns_topic_name
+  name              = var.sns_topic_name
+  kms_master_key_id = var.kms_master_key_id
 }
 
 resource "aws_sns_topic_subscription" "user_updates_sqs_target" {
