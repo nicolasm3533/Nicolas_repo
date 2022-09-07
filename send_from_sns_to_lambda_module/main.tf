@@ -7,11 +7,10 @@ resource "aws_subnet" "main" {
   cidr_block = var.cidr_block
 }
 
-
 resource "aws_iam_role_policy" "lambda_policy" {
   name   = var.policy_name
   role   = aws_iam_role.lambda_role.name
-  policy = file("policy.json")
+  policy = templatefile("policy_template.json", { lambda_arn = "${aws_lambda_function.sns_lambda.arn}", sns_topic_arn = "${aws_sns_topic.slack_sns_topic.id}" })
 }
 
 resource "aws_iam_role" "lambda_role" {

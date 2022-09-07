@@ -1,0 +1,24 @@
+{
+	"Version": "2012-10-17",
+	"Statement": [{
+			"Effect": "Allow",
+			"Action": [
+				"lambda:*",
+				"sns:*"
+			],
+			"Resource": [
+				"${sns_topic_arn}",
+				"${lambda_arn}"
+			]
+		},
+		{
+			"Action": [
+				"logs:CreateLogGroup",
+				"logs:CreateLogStream",
+				"logs:PutLogEvents"
+			],
+			"Effect": "Allow",
+			"Resource": "*"
+		}
+	]
+}

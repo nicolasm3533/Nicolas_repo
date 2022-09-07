@@ -24,7 +24,7 @@ func init() {
 
 func Test(t *testing.T) {
 
-	slack_url := "https://hooks.slack.com/services/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"
+	slack_url := "https://hooks.slack.com/services/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"
 
 	// attach_policy := "false"
 

@@ -4,9 +4,10 @@
 
 This is a terraform module to send Slack notifications using SNS and a Lambda function
 
-## Requirements
+## Providers
 
 Terraform: >= 1.2.1
+AWS CLI: >= 2.4.16
 
 ## Usage
 To install this module you should run:
