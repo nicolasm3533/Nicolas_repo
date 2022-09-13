@@ -48,11 +48,6 @@ output "aws_lambda_layer_version_arn" {
   description = "AWS Lambda layer version ARN"
 }
 
-output "aws_lambda_layer_version_id" {
-  value       = aws_lambda_layer_version.requests_layer.id
-  description = "AWS Lambda layer version ID"
-}
-
 output "aws_lambda_function_arn" {
   value       = aws_lambda_function.sns_lambda.arn
   description = "AWS Lambda function ARN"
@@ -66,11 +61,6 @@ output "aws_lambda_function_id" {
 output "aws_sns_topic_arn" {
   value       = aws_sns_topic.slack_sns_topic.arn
   description = "AWS SNS topic ARN"
-}
-
-output "aws_sns_topic_id" {
-  value       = aws_sns_topic.slack_sns_topic.id
-  description = "AWS SNS topic ID"
 }
 
 output "aws_sns_topic_subscription_arn" {

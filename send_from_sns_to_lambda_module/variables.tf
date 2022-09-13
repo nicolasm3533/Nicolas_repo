@@ -81,7 +81,7 @@ variable "archive_file_source" {
 
 variable "archive_file_output_path" {
   default     = "outputs/slack-sqs-lambda-py"
-  description = "Output path for unzipping the archive file"
+  description = "Output path for zipping the archive file"
   type        = string
 
 }
@@ -110,5 +110,18 @@ variable "kms_master_key_id" {
   description = "Key ID for encrypting SNS messages"
   type        = string
 }
+
+variable "region" {
+  default     = "us-east-1"
+  description = "default AWS region"
+}
+
+variable "tags" {
+  description = "Map of tags to assign to the object."
+  type        = map(string)
+  default     = null
+}
+
+
 
 

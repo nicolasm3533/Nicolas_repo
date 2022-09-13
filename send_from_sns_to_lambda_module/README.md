@@ -2,7 +2,28 @@
 
 ## Description
 
-This is a terraform module to send Slack notifications using SNS and a Lambda function
+This is a terraform module to send Slack notifications using SNS and a Lambda function.
+This module will deploy as core resources the following:
+
+- SNS topic
+- SNS Subscription
+- Lambda Function
+
+The SNS topic will receive messages, in example from a Cloudwatch metric, and will trigger the SNS subscription. The subscription will trigger the Lambda function. The function will use a Slack webhook to send messages to a channel using the Slack payload format, as described on "How to deploy and use this module".
+
+The following data block will take the lambda python code (called slack_lambda_function.py) and will zip it in the "/output" path:
+
+    data "archive_file" "zip_function" {
+      type        = var.archive_file_type
+      source_file = var.archive_file_source
+      output_path = var.archive_file_output_path
+    
+    }
+
+Then, the Lambda function will get that .zip file and will be deployed using that python code. If you need to do some change in the lambda code, just edit the slack_lambda_function file. Nothing else is needed.
+
+
+![Image text](https://github.com/nicolasm3533/Nicolas_repo/blob/main/Slack_Lambda_diagram.jpg)
 
 ## Providers
 
@@ -28,11 +49,13 @@ terraform apply
 
 5. Use the following message to try:
 
-***{ 
+```json
+{ 
   "Message" : "Random Message",
   "Title": "Test Title", 
-  "Username": "Nicolas",
-  }***
+  "Username": "Nicolas"
+  }
+```
   
 6. You should get a message on your Slack channel with the values you included on step 5.
 
@@ -72,9 +95,25 @@ terraform apply
 | kms_master_key_id | alias/aws/sns | string | Key for messages encryption
 | aws_lambda_permission_statement_id | AllowExecutionFromSNS | string | Statement id for Lambda permission
 | aws_lambda_permission_action | lambda:InvokeFunction | string | Lambda permission action
+| tags | null | string | Default tags for all the resources in the module
 
 ## Outputs
 
 | Name | Type | Description |
 |----|----|----|
 | sns_topic_arn | string | SNS topic ARN
+| aws_iam_role_arn | string | AWS IAM role ARN
+| aws_iam_role_id | string | AWS IAM role ID
+| aws_iam_role_policy_id | string | AWS IAM role policy ID
+| aws_lambda_function_arn | string | AWS Lambda function ARN
+| aws_lambda_function_id | string | AWS Lambda function ID
+| aws_lambda_layer_version_arn | string | AWS Lambda layer ARN
+| aws_lambda_permission_id | string | AWS Lambda permission ID
+| aws_sns_topic_arn | string | AWS SNS topic ARN
+| aws_sns_topic_subscription_arn | string | AWS SNS topic subscription ARN
+| aws_sns_topic_subscription_id | string | AWS SNS topic subscription ID
+| aws_subnet_arn | string | AWS subnet ARN
+| aws_subnet_id | string | AWS subnet ID
+| aws_vpc_arn | string | AWS VPC ARN
+| aws_vpc_id | string | AWS VPC ID
+| policy_template | string | Policy template name 

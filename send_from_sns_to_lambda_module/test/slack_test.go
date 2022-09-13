@@ -22,7 +22,7 @@ func init() {
 	}
 }
 
-func Test(t *testing.T) {
+func TestMain(t *testing.T) {
 
 	slack_url := "https://hooks.slack.com/services/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"
 
