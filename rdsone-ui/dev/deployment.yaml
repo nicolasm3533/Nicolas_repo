@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: rdsone-ui-deployment
-  namespace: data
+  namespace: rdsone-ui
   labels:
     app: rdsone-ui
 spec:
