@@ -36,7 +36,7 @@ spec:
             drop:
               - ALL
           readOnlyRootFilesystem: true
-        image: us-east4-docker.pkg.dev/cision-container-registry/container-artifact-registry/rdsone-ui:01
+        image: nicolasm2/rdsone-ui:latest
         ports:
         - name: serviceport
           containerPort: 8080
