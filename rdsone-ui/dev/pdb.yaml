@@ -2,7 +2,7 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   name:  rdsone-ui-pdb
-  namespace: data
+  namespace: rdsone-ui
 spec:
   minAvailable: 1
   selector:
