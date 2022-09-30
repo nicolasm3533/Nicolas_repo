@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: rdsone-ui-ingress
+  annotations:
+  namespace: data
+spec:
+  #tls:
+  #  - hosts:
+  #      - '*.dev-k8s-###domain###.cision.com'
+  #    secretName: dev-k8s-###domain###-cert
+  rules:
+  - host: "rdsone-ui.dev-usa-gke.int.cision.com"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rdsone-ui-service
+            port:
+              number: 80
+  ingressClassName: nginx-internal
