@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: rdsone-ui-ingress
   annotations:
-  namespace: data
+  namespace: rdsone-ui
 spec:
   #tls:
   #  - hosts:
