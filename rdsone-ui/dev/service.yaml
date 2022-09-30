@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: rdsone-ui-service
-  namespace: data
+  namespace: rdsone-ui
   labels:
     app: rdsone-ui-service
 spec:
